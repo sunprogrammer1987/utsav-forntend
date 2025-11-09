@@ -1,0 +1,102 @@
+<div class="container mx-auto px-4 py-10">
+  <!-- Header -->
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8">
+    <h1
+      class="text-3xl font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2"
+      data-aos="fade-right"
+    >
+      🎉 Event Packages
+    </h1>
+
+    <p class="text-gray-500 dark:text-gray-400 text-sm" data-aos="fade-left">
+      Choose from curated decoration & service bundles for every occasion
+    </p>
+  </div>
+  <div *ngIf="loading" class="text-center text-gray-500 py-20">Loading events...</div>
+<div *ngIf="error" class="text-center text-red-500 py-20">{{ error }}</div>
+  <!-- Grid -->
+  <div *ngIf="!loading && !error"
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+    data-aos="fade-up"
+    data-aos-delay="100"
+  >
+    <div
+      *ngFor="let e of events"
+      class="group border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl bg-white dark:bg-gray-800 transition-transform transform hover:-translate-y-1"
+    >
+      <!-- Image Section -->
+      <div class="relative">
+        <img
+          [src]="e.image"
+          alt="{{ e.name }}"
+          class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div
+          *ngIf="e.isPopular"
+          class="absolute top-3 left-3 bg-yellow-400 text-gray-900 text-xs font-semibold px-2 py-1 rounded-full shadow-sm"
+        >
+          ⭐ Popular
+        </div>
+        <div
+          *ngIf="e.discount"
+          class="absolute top-3 right-3 bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded-full shadow-sm"
+        >
+          {{ e.discount }}% OFF
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="p-5 flex flex-col h-full">
+        <h3
+          class="text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition"
+        >
+          {{ e.name }}
+        </h3>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 capitalize">
+          {{ e.type }}
+        </p>
+
+        <p class="mt-3 text-indigo-600 dark:text-indigo-400 text-xl font-bold">
+          ₹{{ e.price | number: '1.0-0' }}
+          <span class="text-sm text-gray-500 dark:text-gray-400 font-normal"> onwards</span>
+        </p>
+
+        <div class="mt-4 flex flex-wrap gap-2 text-xs text-gray-500 dark:text-gray-400">
+          <span
+            *ngFor="let tag of e.features"
+            class="px-2 py-1 rounded-full bg-gray-100 dark:bg-gray-700"
+            >{{ tag }}</span
+          >
+        </div>
+
+        <a
+          [routerLink]="['/events', e.id]"
+          class="mt-6 inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium py-2.5 rounded-full transition shadow-md hover:shadow-lg"
+        >
+          View Details
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div
+    *ngIf="!events || events.length === 0"
+    class="text-center py-20 text-gray-500 dark:text-gray-400 border border-dashed rounded-xl border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 mt-10"
+  >
+    <p class="text-lg">No event packages found 😔</p>
+    <p class="mt-2 text-sm">
+      Explore more on
+      <a routerLink="/products" class="text-indigo-600 hover:underline">Shop</a>.
+    </p>
+  </div>
+</div>

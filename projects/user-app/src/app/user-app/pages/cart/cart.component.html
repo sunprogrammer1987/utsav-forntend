@@ -1,0 +1,133 @@
+<div class="container mx-auto px-4 py-10">
+  <!-- 🛒 Page Header -->
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-8">
+    <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2">
+      🛒 Your Cart
+    </h1>
+    <a [routerLink]="['/products']" [queryParams]="{ type: 'sale' }"
+      class="text-sm text-indigo-600 dark:text-indigo-400 hover:underline"
+    >
+      ← Continue Shopping
+    </a>
+  </div>
+
+  <!-- 🌫 Empty Cart -->
+  <div
+    *ngIf="items.length === 0"
+    class="text-center py-20 border border-dashed rounded-xl border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800"
+  >
+    <p class="text-gray-500 dark:text-gray-400 text-lg">Your cart is empty 😔</p>
+    <p class="mt-2 text-sm">
+      Explore our
+      <a [routerLink]="['/products']" [queryParams]="{ type: 'sale' }" class="text-indigo-600 hover:underline">Shop</a> or
+      <a [routerLink]="['/products']" [queryParams]="{ type: 'rental' }" class="text-indigo-600 hover:underline">Rentals</a>.
+    </p>
+  </div>
+
+  <!-- 🛍️ Cart Items -->
+  <div *ngIf="items.length > 0" class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <!-- Left: Cart Items List -->
+    <div class="lg:col-span-2 space-y-4">
+      <div
+        *ngFor="let it of items"
+        class="flex flex-col sm:flex-row sm:items-center gap-4 border border-gray-200 dark:border-gray-700 rounded-2xl bg-white dark:bg-gray-800 p-4 shadow-sm hover:shadow-md transition"
+      >
+        <!-- Product Image -->
+        <img
+          [src]="it.images[0]"
+          alt="{{ it.name }}"
+          class="w-full sm:w-28 h-40 sm:h-28 object-cover rounded-xl"
+        />
+
+        <!-- Product Info -->
+        <div class="flex-1">
+          <div class="font-semibold text-gray-900 dark:text-gray-100 text-base">
+            {{ it.name }}
+          </div>
+          <div class="text-sm text-gray-500 dark:text-gray-400 mt-1">
+            {{ it.category }} • {{ it.type }}
+          </div>
+
+          <div class="mt-3 flex items-center gap-4">
+            <div class="text-lg font-bold text-indigo-600 dark:text-indigo-400">
+              ₹{{ it.price }}
+              <span
+                *ngIf="it.type === 'rental'"
+                class="text-xs text-gray-500 dark:text-gray-400 font-normal"
+                >/day</span
+              >
+            </div>
+
+            <!-- Quantity Control -->
+            <div class="flex items-center gap-2 border rounded-full px-2 py-1 bg-gray-50 dark:bg-gray-700">
+              <button
+                (click)="updateQuantity(it, -1)"
+                class="px-2 text-lg font-semibold text-gray-600 dark:text-gray-300 hover:text-indigo-600"
+              >
+                –
+              </button>
+              <input
+                type="number"
+                min="1"
+                [(ngModel)]="it.quantity"
+                (change)="recalculateSubtotal()"
+                class="w-10 text-center bg-transparent border-none focus:ring-0 text-gray-900 dark:text-gray-100"
+              />
+              <button
+                (click)="updateQuantity(it, 1)"
+                class="px-2 text-lg font-semibold text-gray-600 dark:text-gray-300 hover:text-indigo-600"
+              >
+                +
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Remove Button -->
+        <div class="flex sm:flex-col items-end justify-between sm:justify-center gap-3">
+          <button
+            (click)="remove(it.id)"
+            class="text-sm text-red-600 hover:underline"
+          >
+            Remove
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Summary Card -->
+    <div class="lg:sticky lg:top-24 h-fit">
+      <div
+        class="border border-gray-200 dark:border-gray-700 rounded-2xl bg-white dark:bg-gray-800 shadow-sm p-6"
+      >
+        <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
+          Order Summary
+        </h2>
+
+        <div class="flex justify-between text-sm mb-2 text-gray-600 dark:text-gray-400">
+          <span>Subtotal</span>
+          <span>₹{{ subtotal }}</span>
+        </div>
+
+        <div class="flex justify-between text-sm mb-2 text-gray-600 dark:text-gray-400">
+          <span>Delivery</span>
+          <span class="text-green-600 dark:text-green-400">Free</span>
+        </div>
+
+        <div
+          class="flex justify-between text-lg font-semibold text-gray-900 dark:text-gray-100 border-t border-gray-200 dark:border-gray-700 pt-3 mt-3"
+        >
+          <span>Total</span>
+          <span>₹{{ subtotal }}</span>
+        </div>
+
+        <a
+          routerLink="/checkout"
+          class="block mt-6 w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 rounded-full transition"
+        >
+          Proceed to Checkout →
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

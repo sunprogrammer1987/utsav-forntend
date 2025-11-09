@@ -1,0 +1,33 @@
+<header class="flex justify-between items-center px-4 py-3 bg-white dark:bg-gray-800 shadow-sm">
+
+  <!-- Left section -->
+  <div class="flex items-center gap-3">
+    <button mat-icon-button class="lg:hidden" (click)="toggleSidebar.emit()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <h1 class="text-lg font-semibold hidden sm:block">Admin Dashboard</h1>
+  </div>
+
+  <!-- Right section -->
+  <div class="flex items-center gap-3">
+    <button mat-icon-button (click)="toggleTheme()">
+      <mat-icon>{{ darkMode ? 'light_mode' : 'dark_mode' }}</mat-icon>
+    </button>
+
+    <mat-menu #profileMenu="matMenu">
+      <button mat-menu-item>Profile</button>
+      <div class="flex items-center gap-3">
+        <button mat-button color="warn" class="!text-red-500 hover:!text-red-700 font-medium" (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          Logout
+        </button>
+      </div>
+    </mat-menu>
+
+    <button mat-button [matMenuTriggerFor]="profileMenu" class="flex items-center gap-1">
+      <mat-icon>account_circle</mat-icon>
+      <span class="hidden sm:block">Admin</span>
+    </button>
+  </div>
+</header>

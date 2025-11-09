@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>Vendor — {{ vendor.shopName || vendor.user?.name }}</h2>
+
+<mat-dialog-content class="space-y-3">
+  <mat-form-field appearance="outline" class="w-full">
+    <mat-label>Shop Name</mat-label>
+    <input matInput [(ngModel)]="vendor.shopName" />
+  </mat-form-field>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <mat-form-field appearance="outline">
+      <mat-label>Phone</mat-label>
+      <input matInput [(ngModel)]="vendor.phone" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Approved</mat-label>
+      <mat-select [(value)]="vendor.isApproved" [(ngModel)]="vendor.isApproved">
+        <mat-option [value]="true">Yes</mat-option>
+        <mat-option [value]="false">No</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <h3 class="text-sm font-medium mt-4">Stores</h3>
+  <ul *ngIf="stores?.length; else noStores" class="space-y-1">
+    <li *ngFor="let s of stores" class="text-sm">
+      • {{ s.name }} — {{ s.city || '-' }} <span class="text-xs text-gray-500">({{ s.isActive ? 'Active' : 'Inactive' }})</span>
+    </li>
+  </ul>
+  <ng-template #noStores><div class="text-xs text-gray-500">No stores found for this vendor.</div></ng-template>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Cancel</button>
+  <button mat-flat-button color="primary" (click)="save()">Save</button>
+</mat-dialog-actions>

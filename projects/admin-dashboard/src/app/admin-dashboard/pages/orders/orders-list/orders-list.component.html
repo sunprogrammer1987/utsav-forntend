@@ -1,0 +1,179 @@
+<!-- 🔹 Quick Summary Bar -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+  <div class="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg shadow-sm">
+    <div class="text-sm text-gray-600 dark:text-gray-400">Total Orders</div>
+    <div class="text-2xl font-semibold text-blue-600 dark:text-blue-300">
+      {{ summary.totalOrders || 0 }}
+    </div>
+  </div>
+
+  <div class="bg-green-50 dark:bg-green-900/30 p-4 rounded-lg shadow-sm">
+    <div class="text-sm text-gray-600 dark:text-gray-400">Total Sales</div>
+    <div class="text-2xl font-semibold text-green-600 dark:text-green-300">
+      ₹{{ summary.totalSales || 0 | number: '1.0-0' }}
+    </div>
+  </div>
+
+  <div class="bg-yellow-50 dark:bg-yellow-900/30 p-4 rounded-lg shadow-sm">
+    <div class="text-sm text-gray-600 dark:text-gray-400">Pending Orders</div>
+    <div class="text-2xl font-semibold text-yellow-600 dark:text-yellow-300">
+      {{ summary.pending || 0 }}
+    </div>
+  </div>
+
+  <div class="bg-indigo-50 dark:bg-indigo-900/30 p-4 rounded-lg shadow-sm">
+    <div class="text-sm text-gray-600 dark:text-gray-400">Delivered Orders</div>
+    <div class="text-2xl font-semibold text-indigo-600 dark:text-indigo-300">
+      {{ summary.delivered || 0 }}
+    </div>
+  </div>
+</div>
+
+<!-- Tabs -->
+<mat-tab-group [(selectedIndex)]="tabIndex" class="mb-6">
+  <!-- 🛍️ Product Orders Tab -->
+  <mat-tab label="Product Orders">
+    <div class="mt-4">
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+        <!-- Filters -->
+        <div class="flex flex-wrap items-end justify-between mb-4 gap-4">
+          <h2 class="text-xl font-semibold">Orders</h2>
+          <div class="flex flex-wrap items-center gap-3">
+            <!-- Vendor Filter -->
+            <mat-form-field appearance="outline" class="w-44">
+              <mat-label>Vendor</mat-label>
+              <mat-select [(ngModel)]="selectedVendor" (selectionChange)="onVendorChange()">
+                <mat-option value="">All</mat-option>
+                <mat-option *ngFor="let v of vendors" [value]="v._id">{{ v.shopName }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <!-- Store Filter -->
+            <mat-form-field appearance="outline" class="w-44">
+              <mat-label>Store</mat-label>
+              <mat-select [(ngModel)]="selectedStore" (selectionChange)="loadOrders()">
+                <mat-option value="">All</mat-option>
+                <mat-option *ngFor="let s of stores" [value]="s._id">{{ s.name }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <!-- Status Filter -->
+            <mat-form-field appearance="outline" class="w-44">
+              <mat-label>Status</mat-label>
+              <mat-select [(value)]="selectedStatus" (selectionChange)="loadOrders()">
+                <mat-option value="">All</mat-option>
+                <mat-option value="pending">Pending</mat-option>
+                <mat-option value="processing">Processing</mat-option>
+                <mat-option value="delivered">Delivered</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <!-- From Date -->
+            <mat-form-field appearance="outline" class="w-44">
+              <mat-label>From</mat-label>
+              <input matInput [matDatepicker]="picker1" [(ngModel)]="fromDate" />
+              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+
+            <!-- To Date -->
+            <mat-form-field appearance="outline" class="w-44">
+              <mat-label>To</mat-label>
+              <input matInput [matDatepicker]="picker2" [(ngModel)]="toDate" />
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+
+            <!-- Buttons -->
+            <div class="flex gap-2">
+              <button mat-flat-button color="primary" (click)="applyDateFilter()">
+                <mat-icon>filter_alt</mat-icon> Apply
+              </button>
+              <button mat-stroked-button color="warn" (click)="resetFilters()">
+                <mat-icon>refresh</mat-icon> Reset
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 🔹 Export Buttons -->
+        <div class="flex gap-2 mb-3">
+          <button mat-stroked-button color="primary" (click)="exportToCSV()">
+            <mat-icon>file_download</mat-icon> CSV
+          </button>
+          <button mat-stroked-button color="accent" (click)="exportToExcel()">
+            <mat-icon>file_present</mat-icon> Excel
+          </button>
+          <button mat-flat-button color="warn" (click)="exportToPDF()">
+            <mat-icon>picture_as_pdf</mat-icon> PDF
+          </button>
+        </div>
+
+        <!-- Table -->
+        <mat-progress-spinner *ngIf="loading" mode="indeterminate" diameter="40" class="mx-auto"></mat-progress-spinner>
+
+        <div *ngIf="!loading && orders.length">
+          <table mat-table [dataSource]="orders" class="mat-elevation-z8 w-full">
+            <ng-container matColumnDef="orderId">
+              <th mat-header-cell *matHeaderCellDef>Order ID</th>
+              <td mat-cell *matCellDef="let o">{{ o._id | slice: 0:8 }}...</td>
+            </ng-container>
+
+            <ng-container matColumnDef="customer">
+              <th mat-header-cell *matHeaderCellDef>Customer</th>
+              <td mat-cell *matCellDef="let o">{{ o.customer?.name || 'Guest' }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="amount">
+              <th mat-header-cell *matHeaderCellDef>Amount</th>
+              <td mat-cell *matCellDef="let o">₹{{ o.total | number: '1.2-2' }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+              <th mat-header-cell *matHeaderCellDef>Status</th>
+              <td mat-cell *matCellDef="let o">
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item (click)="updateStatus(o, 'pending')">Pending</button>
+                  <button mat-menu-item (click)="updateStatus(o, 'processing')">Processing</button>
+                  <button mat-menu-item (click)="updateStatus(o, 'delivered')">Delivered</button>
+                </mat-menu>
+                <button mat-stroked-button [matMenuTriggerFor]="menu">
+                  {{ o.orderStatus | titlecase }}
+                  <mat-icon>arrow_drop_down</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+            <ng-container matColumnDef="date">
+              <th mat-header-cell *matHeaderCellDef>Date</th>
+              <td mat-cell *matCellDef="let o">{{ o.createdAt | date: 'mediumDate' }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+              <th mat-header-cell *matHeaderCellDef></th>
+              <td mat-cell *matCellDef="let o">
+                <button mat-icon-button color="primary" (click)="viewDetails(o)">
+                  <mat-icon>visibility</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+        </div>
+
+        <div *ngIf="!loading && !orders.length" class="text-center text-gray-500 py-8">
+          No orders found.
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+
+  <!-- 🎉 Event Bookings Tab -->
+  <mat-tab label="Event Bookings">
+    <div class="mt-4">
+      <app-bookings></app-bookings>
+    </div>
+  </mat-tab>
+</mat-tab-group>

@@ -1,0 +1,53 @@
+<h2 mat-dialog-title>{{ data.category ? 'Edit' : 'Add' }} Category</h2>
+
+<div mat-dialog-content>
+  <form [formGroup]="form" class="flex flex-col gap-4 mt-2">
+
+    <!-- Name -->
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+
+    <!-- Slug -->
+    <mat-form-field>
+      <mat-label>Slug</mat-label>
+      <input matInput formControlName="slug" />
+    </mat-form-field>
+
+    
+    <!-- Store -->
+    <mat-form-field>
+      <mat-label>Store</mat-label>
+      <mat-select formControlName="store">
+        <mat-option *ngFor="let s of stores" [value]="s._id">{{ s.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    
+    <!-- Parent Category -->
+    <mat-form-field>
+      <mat-label>Parent Category</mat-label>
+      <mat-select formControlName="parent">
+        <mat-option [value]="''">None (Main Category)</mat-option>
+        <mat-option *ngFor="let c of parentcategories" [value]="c._id">
+          {{ c.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- serviceType -->
+    <mat-form-field appearance="outline" *ngIf="!form.get('parent')?.value">
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="serviceType">
+        <mat-option *ngFor="let s of serviceType" [value]="s._id">{{ s.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+  </form>
+</div>
+
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-flat-button color="primary" (click)="save()">Save</button>
+</div>

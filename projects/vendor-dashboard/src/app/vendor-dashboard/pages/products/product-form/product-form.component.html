@@ -1,0 +1,90 @@
+<h2 class="text-xl font-semibold mb-4">
+  {{ editing ? 'Edit Product' : 'Add Product' }}
+</h2>
+
+<form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4">
+
+  <!-- 🔹 Title -->
+  <mat-form-field appearance="outline" class="w-full">
+    <mat-label>Product Title</mat-label>
+    <input matInput formControlName="title" placeholder="Enter product title" />
+    <mat-error *ngIf="form.get('title')?.invalid">Title is required</mat-error>
+  </mat-form-field>
+
+  <!-- 🔹 Description -->
+  <mat-form-field appearance="outline" class="w-full">
+    <mat-label>Description</mat-label>
+    <textarea matInput rows="3" formControlName="description" placeholder="Enter product description"></textarea>
+  </mat-form-field>
+
+  <!-- 🔹 Store Selection -->
+  <mat-form-field appearance="outline" class="w-full">
+    <mat-label>Store</mat-label>
+    <mat-select formControlName="store" (selectionChange)="onStoreChange($event.value)">
+      <mat-option *ngFor="let s of stores" [value]="s._id">{{ s.name }}</mat-option>
+    </mat-select>
+    <mat-error *ngIf="form.get('store')?.invalid">Store is required</mat-error>
+  </mat-form-field>
+
+  <!-- 🔹 Category Selection (filtered by store) -->
+  <mat-form-field appearance="outline" class="w-full">
+    <mat-label>Category</mat-label>
+    <mat-select formControlName="category">
+      <mat-option *ngFor="let c of categories" [value]="c._id">{{ c.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <!-- 🔹 Price & Discount -->
+  <div class="grid grid-cols-2 gap-4">
+    <mat-form-field appearance="outline">
+      <mat-label>Price (₹)</mat-label>
+      <input matInput type="number" formControlName="price" placeholder="e.g. 999" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Discount (%)</mat-label>
+      <input matInput type="number" formControlName="discount" placeholder="e.g. 10" />
+    </mat-form-field>
+  </div>
+
+  <!-- 🔹 Stock & Tags -->
+  <div class="grid grid-cols-2 gap-4">
+    <mat-form-field appearance="outline">
+      <mat-label>Stock</mat-label>
+      <input matInput type="number" formControlName="stock" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Tags (comma separated)</mat-label>
+      <input matInput formControlName="tags" placeholder="e.g. decor, home, lighting" />
+    </mat-form-field>
+  </div>
+
+  <!-- 🔹 Featured Checkbox -->
+  <mat-checkbox formControlName="isFeatured">Featured Product</mat-checkbox>
+
+  <!-- 🔹 Image Upload -->
+  <div class="mt-4">
+    <label class="font-medium mb-1 block">Upload Images</label>
+    <input type="file" multiple (change)="onFileSelect($event)" class="block text-sm text-gray-500" />
+  </div>
+
+  <!-- 🔹 Preview Images -->
+  <div *ngIf="previewUrls.length" class="flex flex-wrap gap-3 mt-2">
+    <div *ngFor="let img of previewUrls; let i = index" class="relative">
+      <img [src]="img" class="w-24 h-24 rounded-lg object-cover border" />
+      <button mat-icon-button color="warn" class="absolute top-0 right-0 bg-white" (click)="removeImage(i)">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- 🔹 Actions -->
+  <div class="flex justify-end space-x-3 mt-6">
+    <button mat-button type="button" (click)="cancel()">Cancel</button>
+    <button mat-flat-button color="primary" type="submit" [disabled]="loading">
+      {{ loading ? 'Saving...' : (editing ? 'Update Product' : 'Create Product') }}
+    </button>
+  </div>
+
+</form>

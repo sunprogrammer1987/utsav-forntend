@@ -1,0 +1,14 @@
+:host {
+  display: block;
+  height: 100vh;
+  overflow: hidden;
+}
+
+aside {
+  @apply transition-transform duration-300 ease-in-out;
+}
+
+main {
+  @apply transition-all duration-300 ease-in-out;
+}
+

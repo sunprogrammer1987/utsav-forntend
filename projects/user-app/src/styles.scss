@@ -1,0 +1,102 @@
+// @import '../../../shared-styles/theme.scss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "swiper/swiper-bundle.min.css";
+
+html, body, app-root {
+height: 100%;
+}
+
+
+/* small helpers */
+.container {
+@apply mx-auto px-4;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+[data-aos] {
+  transition-property: transform, opacity !important;
+}
+
+header {
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 70%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+.animate-progress {
+  animation: progress 3s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.animate-scaleIn {
+  animation: scaleIn 0.4s ease-out forwards;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  20%, 60% {
+    transform: translateX(-5px);
+  }
+  40%, 80% {
+    transform: translateX(5px);
+  }
+}
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+button[type='submit'] {
+  transition: all 0.3s ease;
+}
+button[type='submit']:active {
+  transform: scale(0.97);
+}
+

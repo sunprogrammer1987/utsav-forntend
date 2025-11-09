@@ -1,0 +1,53 @@
+/* Angular Material Theme + TailwindCSS shared file */
+
+/* 1️⃣ Angular Material prebuilt theme */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+
+/* 2️⃣ Tailwind layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 3️⃣ Optional global UI tweaks */
+html, body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9fafb;
+}
+
+.mat-mdc-card {
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+input[type="file"] {
+  @apply border 
+  rounded px-3 py-2 cursor-pointer text-sm;
+}
+
+.snackbar-success {
+  background-color: #16a34a; /* green-600 */
+  color: white;
+}
+.snackbar-error {
+  background-color: #dc2626; /* red-600 */
+  color: white;
+}
+.snackbar-warning {
+  background-color: #f59e0b; /* amber-500 */
+  color: black;
+}
+.snackbar-info {
+  background-color: #2563eb; /* blue-600 */
+  color: white;
+}
+.snackbar-default {
+  background-color: #4b5563; /* gray-600 */
+  color: white;
+}
+
+.dark .snackbar-success   { background-color: #22c55e; }
+.dark .snackbar-error     { background-color: #ef4444; }
+.dark .snackbar-warning   { background-color: #fbbf24; color: #111; }
+.dark .snackbar-info      { background-color: #3b82f6; }
+.dark .snackbar-default   { background-color: #374151; }

@@ -1,0 +1,74 @@
+<div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-200">
+      Category Tree
+    </h2>
+
+    <div class="flex items-center gap-2">
+      <button mat-stroked-button color="primary" (click)="expandAll()">
+        <mat-icon>unfold_more</mat-icon>
+        Expand All
+      </button>
+
+      <button mat-stroked-button color="accent" (click)="collapseAll()">
+        <mat-icon>unfold_less</mat-icon>
+        Collapse All
+      </button>
+
+      <a
+        routerLink="/categories"
+        class="ml-2 text-sm text-blue-600 dark:text-blue-400 hover:underline"
+      >
+        Back to List
+      </a>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="flex justify-center py-8">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+
+  <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" *ngIf="!loading">
+    <!-- Leaf Node -->
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+      <li class="flex items-center space-x-2 p-2 hover:bg-gray-50 dark:hover:bg-gray-700 rounded cursor-pointer"
+          (click)="editCategory(node)">
+        <button mat-icon-button disabled></button>
+        <mat-icon class="text-green-500">label</mat-icon>
+        <span>{{ node.name }}</span>
+      </li>
+    </mat-tree-node>
+
+    <!-- Expandable Node -->
+    <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+      <li>
+        <div
+          class="flex items-center space-x-2 p-2 hover:bg-gray-50 dark:hover:bg-gray-700 rounded cursor-pointer"
+          (click)="editCategory(node)"
+        >
+          <button mat-icon-button matTreeNodeToggle>
+            <mat-icon class="text-gray-500">
+              {{ treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right' }}
+            </mat-icon>
+          </button>
+
+          <mat-icon class="text-yellow-600">
+            folder
+          </mat-icon>
+          <span class="font-medium">{{ node.name }}</span>
+        </div>
+
+        <ul [class.pl-6]="true">
+          <ng-container matTreeNodeOutlet></ng-container>
+        </ul>
+      </li>
+    </mat-nested-tree-node>
+  </mat-tree>
+
+  <div
+    *ngIf="!loading && dataSource.data.length === 0"
+    class="text-center text-gray-500 py-6"
+  >
+    No categories found.
+  </div>
+</div>

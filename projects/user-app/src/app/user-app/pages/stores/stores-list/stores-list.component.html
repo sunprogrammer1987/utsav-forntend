@@ -1,0 +1,92 @@
+<div class="container mx-auto px-4 py-10">
+  <!-- Header -->
+  <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8">
+    <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2">
+      🏪 Vendors & Stores
+    </h1>
+    <p class="text-gray-500 dark:text-gray-400 text-sm">
+      Trusted vendors for weddings, events, and party setups
+    </p>
+  </div>
+
+  <!-- Grid -->
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+    data-aos="fade-up"
+    data-aos-delay="100"
+  >
+    <div
+      *ngFor="let s of stores"
+      class="group bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-transform transform hover:-translate-y-1"
+    >
+      <!-- Image -->
+      <div class="relative">
+        <img
+          [src]="s.image"
+          alt="{{ s.name }}"
+          class="w-full h-52 object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        <div
+          *ngIf="s.featured"
+          class="absolute top-3 left-3 bg-yellow-400 text-gray-900 text-xs font-semibold px-2 py-1 rounded-full shadow-sm"
+        >
+          ⭐ Featured
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="p-5">
+        <h2
+          class="text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:text-indigo-600 transition"
+        >
+          {{ s.name }}
+        </h2>
+        <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
+          📍 {{ s.city }}
+        </p>
+
+        <div class="mt-3 flex items-center gap-2">
+          <span class="text-yellow-400">⭐</span>
+          <span class="text-sm text-gray-600 dark:text-gray-400">{{ s.rating }}</span>
+        </div>
+
+        <div class="mt-5 flex justify-between items-center">
+          <a
+            [routerLink]="['/stores', s.id]"
+            class="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium px-4 py-2 rounded-full transition"
+          >
+            View Details
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+
+          <a
+            href="tel:{{ s.phone }}"
+            title="Call Vendor"
+            class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 text-lg"
+          >
+            📞
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div
+    *ngIf="!stores || stores.length === 0"
+    class="text-center py-20 text-gray-500 dark:text-gray-400 border border-dashed rounded-xl border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 mt-10"
+  >
+    <p class="text-lg">No vendors available yet 😔</p>
+    <p class="mt-2 text-sm">
+      Check back soon for trusted event partners.
+    </p>
+  </div>
+</div>

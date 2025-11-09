@@ -1,0 +1,20 @@
+<div class="container py-6" *ngIf="event">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="md:col-span-2">
+      <img [src]="event.image" class="w-full h-72 object-cover rounded" />
+      <h1 class="text-2xl font-bold mt-4">{{ event.name }}</h1>
+      <p class="text-gray-600 mt-2">{{ event.description }}</p>
+      <div class="mt-4">
+        <strong>Features:</strong>
+        <ul class="list-disc ml-6">
+          <li *ngFor="let f of event.features">{{ f }}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="p-4 border rounded">
+      <div class="text-lg font-semibold">Price: ₹{{ event.basePrice }}</div>
+      <div class="mt-4">Type: {{ event.type }}</div>
+      <div class="mt-4">Status: {{ event.status }}</div>
+    </div>
+  </div>
+</div>

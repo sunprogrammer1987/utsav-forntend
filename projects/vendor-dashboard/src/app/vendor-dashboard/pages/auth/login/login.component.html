@@ -1,0 +1,36 @@
+<div class="login-container">
+  <mat-card class="login-card mat-elevation-z6">
+    <div class="logo-section">
+      <img src="assets/logo.png" alt="Vendor Portal" class="logo" />
+      <h2 class="title">Vendor Login</h2>
+      <p class="subtitle">Sign in to manage your stores and products</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="login()" class="login-form">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="Enter your email" type="email" />
+        <mat-error *ngIf="form.get('email')?.hasError('required')">Email is required</mat-error>
+        <mat-error *ngIf="form.get('email')?.hasError('email')">Enter a valid email</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password" placeholder="Enter your password" />
+        <button mat-icon-button matSuffix type="button" (click)="hidePassword = !hidePassword">
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="form.get('password')?.hasError('required')">Password is required</mat-error>
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" class="full-width mt-3" [disabled]="loading || form.invalid">
+        <mat-icon *ngIf="loading" class="spin">sync</mat-icon>
+        {{ loading ? 'Signing in...' : 'Login' }}
+      </button>
+    </form>
+
+    <div class="footer">
+      <p>Need help? <a href="#">Contact Support</a></p>
+    </div>
+  </mat-card>
+</div>

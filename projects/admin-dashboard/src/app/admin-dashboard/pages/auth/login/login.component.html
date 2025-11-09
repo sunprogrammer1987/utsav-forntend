@@ -1,0 +1,37 @@
+<div class="auth-wrapper">
+  <mat-card class="auth-card mat-elevation-z6">
+    <div class="auth-header">
+      <img src="assets/vendor-logo.png" alt="Vendor Portal" class="auth-logo" />
+      <h2 class="auth-title">Dashboard Login</h2>
+      <p class="auth-subtitle">Access your store dashboard</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="login()" class="auth-form">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" placeholder="Enter email" formControlName="email" />
+        <mat-error *ngIf="form.get('email')?.hasError('required')">Email is required</mat-error>
+        <mat-error *ngIf="form.get('email')?.hasError('email')">Invalid email format</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" placeholder="Enter password" formControlName="password" />
+        <button mat-icon-button matSuffix type="button" (click)="hide = !hide">
+          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error *ngIf="form.get('password')?.hasError('required')">Password is required</mat-error>
+      </mat-form-field>
+
+      <button mat-flat-button color="primary" class="full-width mt-3" [disabled]="loading || form.invalid">
+        <mat-icon *ngIf="loading" class="spin">sync</mat-icon>
+        {{ loading ? 'Signing in...' : 'Login' }}
+      </button>
+    </form>
+
+    <div class="auth-footer">
+      <a href="#" class="forgot-link">Forgot password?</a>
+      <p>Need help? <a href="#">Contact support</a></p>
+    </div>
+  </mat-card>
+</div>

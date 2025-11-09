@@ -1,0 +1,30 @@
+<!-- 🔹 Quick Summary Bar -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+  <div class="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-lg shadow-sm">
+    <div class="text-sm text-gray-600 dark:text-gray-400">Total Orders</div>
+    <div class="text-2xl font-semibold text-blue-600 dark:text-blue-300">
+      {{ summary.totalOrders || 0 }}
+    </div>
+  </div>
+
+  <div class="bg-green-50 dark:bg-green-900/30 p-4 rounded-lg shadow-sm">
+    <div class="text-sm text-gray-600 dark:text-gray-400">Total Sales</div>
+    <div class="text-2xl font-semibold text-green-600 dark:text-green-300">
+      ₹{{ summary.totalSales || 0 | number:'1.0-0' }}
+    </div>
+  </div>
+
+  <div class="bg-yellow-50 dark:bg-yellow-900/30 p-4 rounded-lg shadow-sm">
+    <div class="text-sm text-gray-600 dark:text-gray-400">Pending Orders</div>
+    <div class="text-2xl font-semibold text-yellow-600 dark:text-yellow-300">
+      {{ summary.pending || 0 }}
+    </div>
+  </div>
+
+  <div class="bg-indigo-50 dark:bg-indigo-900/30 p-4 rounded-lg shadow-sm">
+    <div class="text-sm text-gray-600 dark:text-gray-400">Delivered Orders</div>
+    <div class="text-2xl font-semibold text-indigo-600 dark:text-indigo-300">
+      {{ summary.delivered || 0 }}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,101 @@
+<header class="hidden md:block fixed top-0 left-0 w-full z-50 backdrop-blur-md 
+  bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-500/95 
+  dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 
+  transition-all duration-300 shadow-md" [class.shadow-lg]="scrolled">
+  <div class="container mx-auto flex items-center justify-between h-16 px-4">
+    <!-- 🖥️ Brand -->
+    <a routerLink="/home" class="hidden md:flex items-center gap-1 text-2xl font-bold tracking-wide hover:opacity-90">
+      <span class="text-white">Decornt</span>
+      <span class="text-yellow-300">Lite</span>
+    </a>
+
+    <!-- 🖥️ Nav -->
+    <nav class="flex items-center gap-8 text-sm font-medium text-white/90">
+      <a [routerLink]="['/products']" [queryParams]="{ type: 'sale' }" routerLinkActive="text-yellow-300"
+        [routerLinkActiveOptions]="{ exact: false }" class="hover:text-yellow-300 transition">
+        Shop
+      </a>
+      <a [routerLink]="['/products']" [queryParams]="{ type: 'rental' }" routerLinkActive="text-yellow-300"
+        [routerLinkActiveOptions]="{ exact: false }" class="hover:text-yellow-300 transition">
+        Rentals
+      </a> <a routerLink="/events" routerLinkActive="text-yellow-300"
+        class="hover:text-yellow-300 transition">Events</a>
+    </nav>
+
+    <!-- 🖥️ Right Section -->
+    <div class="hidden md:flex items-center gap-4">
+      <!-- 🔍 Search -->
+      <div class="relative w-full sm:w-64" clickOutside (clickOutside)="onClickOutside()">
+        <input [(ngModel)]="searchTerm" (input)="onSearchInput()" placeholder="Search products, events..." class="w-full border-none rounded-full pl-3 pr-10 py-1.5 text-sm 
+          text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-300" />
+        <button (click)="onSearch()" class="absolute right-3 top-1.5 text-gray-600 hover:text-yellow-400"
+          title="Search">
+          🔍
+        </button>
+      </div>
+
+      <!-- 🛒 Cart -->
+      <a routerLink="/cart" class="relative inline-flex items-center justify-center">
+        <span class="text-2xl">🛒</span>
+        <span *ngIf="cartCount > 0"
+          class="absolute -top-1 -right-2 bg-yellow-400 text-gray-900 text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+          {{ cartCount }}
+        </span>
+      </a>
+
+      <!-- 🌙 Dark Mode -->
+      <button (click)="toggleTheme()" class="p-2 rounded-full bg-white/10 hover:bg-white/20 transition"
+        title="Toggle Dark Mode">
+        <span *ngIf="!isDark">🌙</span>
+        <span *ngIf="isDark">☀️</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- 📱 Mobile Header -->
+<div
+  class="md:hidden fixed top-0 left-0 w-full z-50 flex items-center gap-2 px-3 py-2 
+  backdrop-blur-md shadow-md transition-all duration-300
+  bg-gradient-to-r from-indigo-600 via-purple-600 to-blue-500/95 
+  dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+>
+  <!-- ⬅️ Back Button (only visible when not on home) -->
+  <button
+    *ngIf="!isHome"
+    (click)="goBack()"
+    class="text-white text-lg p-1 hover:text-yellow-300 transition"
+    title="Go Back"
+  >
+    ←
+  </button>
+
+  <!-- 📍 Location -->
+  <div
+    class="flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-yellow-400 to-amber-500 text-gray-900
+    rounded-full text-xs font-semibold shadow-sm"
+  >
+    <span>📍</span>
+    <span>{{ userLocation || 'Your City' }}</span>
+  </div>
+
+  <!-- 🔍 Search -->
+  <div class="relative flex-1">
+    <input
+      [(ngModel)]="searchTerm"
+      (input)="onSearchInput()"
+      placeholder="Search products..."
+      class="w-full border-none rounded-full pl-3 pr-10 py-1.5 text-sm 
+      text-white placeholder-gray-300 bg-white/10 focus:outline-none 
+      focus:ring-2 focus:ring-yellow-400 shadow-sm"
+    />
+    <button
+      (click)="onSearch()"
+      class="absolute right-2 top-1/2 -translate-y-1/2 bg-gradient-to-r from-yellow-400 to-amber-500 
+      text-gray-900 p-1.5 rounded-full shadow-md hover:opacity-90 transition"
+      title="Search"
+    >
+      🔍
+    </button>
+  </div>
+</div>

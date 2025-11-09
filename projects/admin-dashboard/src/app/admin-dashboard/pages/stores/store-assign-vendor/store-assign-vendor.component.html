@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Assign Vendor</h2>
+
+<mat-dialog-content>
+  <mat-form-field appearance="outline" class="w-full">
+    <mat-label>Vendor</mat-label>
+    <mat-select [(ngModel)]="selectedVendor">
+      <mat-option *ngFor="let v of vendors" [value]="v._id">
+        {{ v.shopName }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-flat-button color="primary" (click)="save()">Assign</button>
+</mat-dialog-actions>

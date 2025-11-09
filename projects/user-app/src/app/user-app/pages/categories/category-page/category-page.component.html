@@ -1,0 +1,138 @@
+<nav *ngIf="!isMobile"
+  class="mx-auto max-w-6xl flex items-center justify-center text-sm text-gray-700 dark:text-gray-300 gap-2 overflow-x-auto scrollbar-hide py-2">
+  <app-breadcrumb></app-breadcrumb>
+  <hr class="border-gray-200 dark:border-gray-700 mb-6" />
+</nav>
+
+<!-- 🔹 Category Type Tabs -->
+<!-- 🗂️ Category Type Tabs -->
+<!-- FILTER BUTTON GROUP -->
+<div  *ngIf="showAll" class="flex overflow-x-auto scrollbar-hide gap-3 mb-6 py-2 px-1 sticky top-0 bg-white dark:bg-gray-900 z-10 border-b border-gray-200 dark:border-gray-700">
+  
+  <!-- Sell -->
+  <button
+    class="flex-shrink-0 px-3 py-1.5 text-sm font-medium border rounded-md transition-all duration-200"
+    [class.bg-indigo-600]="serviceType === 'sell'"
+    [class.text-white]="serviceType === 'sell'"
+    [class.border-indigo-600]="serviceType === 'sell'"
+    [class.text-gray-700]="serviceType !== 'sell'"
+    [class.border-gray-300]="serviceType !== 'sell'"
+    (click)="setType('sell')"
+  >
+    🛍️ Sell
+  </button>
+
+  <!-- Rent -->
+  <button
+    class="flex-shrink-0 px-3 py-1.5 text-sm font-medium border rounded-md transition-all duration-200"
+    [class.bg-indigo-600]="serviceType === 'rent'"
+    [class.text-white]="serviceType === 'rent'"
+    [class.border-indigo-600]="serviceType === 'rent'"
+    [class.text-gray-700]="serviceType !== 'rent'"
+    [class.border-gray-300]="serviceType !== 'rent'"
+    (click)="setType('rent')"
+  >
+    🏕️ Rent
+  </button>
+
+  <!-- Event -->
+  <button
+    class="flex-shrink-0 px-3 py-1.5 text-sm font-medium border rounded-md transition-all duration-200"
+    [class.bg-indigo-600]="serviceType === 'service'"
+    [class.text-white]="serviceType === 'service'"
+    [class.border-indigo-600]="serviceType === 'service'"
+    [class.text-gray-700]="serviceType !== 'service'"
+    [class.border-gray-300]="serviceType !== 'service'"
+    (click)="setType('service')"
+  >
+    🎉 Event
+  </button>
+
+  <!-- All -->
+  <!-- <button
+    class="flex-shrink-0 px-3 py-1.5 text-sm font-medium border rounded-md transition-all duration-200"
+    [class.bg-indigo-600]="!serviceType"
+    [class.text-white]="!serviceType"
+    [class.border-indigo-600]="!serviceType"
+    [class.text-gray-700]="serviceType"
+    [class.border-gray-300]="serviceType"
+    (click)="setType(null)"
+  >
+    🌍 All
+  </button> -->
+</div>
+
+
+<div class="container mx-auto px-4">
+
+  <!-- 🌿 View All Categories -->
+  <div *ngIf="showAll">
+    <h1 class="text-2xl font-bold mb-6 text-gray-800 dark:text-gray-100">
+      {{serviceType == 'service' ? 'Event' : serviceType == 'sell' ? 'Shop' : serviceType == 'rent' ? 'Rent' : 'All' }} Categories
+    </h1>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+      <div
+        *ngFor="let cat of categories"
+        class="relative group cursor-pointer bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden hover:shadow-md transition-all"
+      >
+        <!-- Main category image -->
+        <a [routerLink]="['/categories',serviceType, cat.slug]">
+          <img
+            [src]="cat.image || 'assets/placeholder.jpg'"
+            alt="{{ cat.name }}"
+            class="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-105"
+          />kkk
+        </a>
+
+        <!-- Main category name -->
+        <div
+          class="p-2 text-center font-medium text-gray-800 dark:text-gray-100 truncate group-hover:text-indigo-600"
+        >
+          {{ cat.name }}
+        </div>
+
+        <!-- 🧩 Hover dropdown: subcategories -->
+        <div
+          *ngIf="cat.children?.length"
+          class="absolute hidden group-hover:block bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg left-0 right-0 z-50 mt-1"
+        >
+          <ul class="divide-y divide-gray-100 dark:divide-gray-700">
+            <li
+              *ngFor="let sub of cat.children"
+              class="px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 truncate"
+              [routerLink]="['/products', cat.slug, sub.slug]"
+            >
+              {{ sub.name }}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🌱 Single Category Page -->
+  <div *ngIf="!showAll && category">
+    <h1 class="text-2xl font-bold mb-6">{{ category.name }}</h1>
+
+    <div *ngIf="category.children?.length; else noSubs"
+         class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+      <div
+        *ngFor="let sub of category.children"
+        class="cursor-pointer bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden hover:shadow-md transition-all"
+        [routerLink]="['/products',serviceType, category.slug, sub.slug]"
+      >
+        <img
+          [src]="sub.image || 'assets/placeholder.jpg'"
+          alt="{{ sub.name }}"
+          class="w-full h-40 object-cover"
+        />
+        <div class="p-2 text-center font-medium truncate">{{ sub.name }}</div>
+      </div>
+    </div>
+
+    <ng-template #noSubs>
+      <p class="text-gray-500 text-center py-10">No subcategories found.</p>
+    </ng-template>
+  </div>
+</div>

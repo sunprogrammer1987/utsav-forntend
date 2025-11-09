@@ -1,0 +1,25 @@
+<div class="p-4">
+  <div class="flex items-center justify-between mb-4">
+    <h2 class="text-lg font-semibold">My Stores</h2>
+    <button mat-flat-button color="primary" (click)="addEdit()"><mat-icon>add</mat-icon> Add Store</button>
+  </div>
+
+  <table mat-table [dataSource]="tempsStores" class="w-full mat-elevation-z2">
+    <ng-container matColumnDef="name"><th mat-header-cell *matHeaderCellDef>Store</th><td mat-cell *matCellDef="let s">{{ s.name }}</td></ng-container>
+    <ng-container matColumnDef="city"><th mat-header-cell *matHeaderCellDef>City</th><td mat-cell *matCellDef="let s">{{ s.city }}</td></ng-container>
+    <ng-container matColumnDef="pincode"><th mat-header-cell *matHeaderCellDef>Pincode</th><td mat-cell *matCellDef="let s">{{ s.pincode }}</td></ng-container>
+    <ng-container matColumnDef="status"><th mat-header-cell *matHeaderCellDef>Status</th><td mat-cell *matCellDef="let s">{{ s.isActive ? 'Active' : 'Inactive' }}</td></ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let s">
+        <button mat-icon-button (click)="addEdit(s)"><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button (click)="toggle(s)"><mat-icon>power_settings_new</mat-icon></button>
+        <button mat-icon-button color="warn" (click)="remove(s)"><mat-icon>delete</mat-icon></button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

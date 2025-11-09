@@ -1,0 +1,142 @@
+<!-- Toolbar -->
+<!-- Toolbar -->
+<div class="flex flex-wrap items-center justify-between mb-5 gap-4">
+  <h2 class="text-2xl font-semibold">Products</h2>
+
+  <!-- Filters Form -->
+  <form [formGroup]="searchForm" class="flex flex-wrap items-center gap-2">
+
+    <!-- Vendor Filter -->
+    <mat-form-field appearance="outline" class="w-48">
+      <mat-label>Vendor</mat-label>
+      <mat-select formControlName="vendor" (selectionChange)="onVendorChange()">
+        <mat-option value="">All</mat-option>
+        <mat-option *ngFor="let v of vendors" [value]="v._id">
+          {{ v.shopName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Store Filter -->
+    <mat-form-field appearance="outline" class="w-48">
+      <mat-label>Store</mat-label>
+      <mat-select formControlName="store" (selectionChange)="onStoreChange()">
+        <mat-option value="">All</mat-option>
+        <mat-option *ngFor="let s of stores" [value]="s._id">
+          {{ s.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Category Filter -->
+    <mat-form-field appearance="outline" class="w-48">
+      <mat-label>Category</mat-label>
+      <mat-select formControlName="category" (selectionChange)="loadProducts()">
+        <mat-option value="">All</mat-option>
+        <mat-option *ngFor="let c of categories" [value]="c._id">
+          {{ c.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Search -->
+    <mat-form-field appearance="outline" class="w-56">
+      <mat-label>Search</mat-label>
+      <input matInput placeholder="Product title..." formControlName="search" (keyup.enter)="onSearch()" />
+      <button mat-icon-button matSuffix (click)="onSearch()" type="button">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <!-- Add Product -->
+    <button mat-flat-button color="primary" type="button" (click)="openForm()">+ Add Product</button>
+  </form>
+</div>
+
+
+<!-- Skeleton Loader -->
+<div *ngIf="loading" class="space-y-3 animate-pulse">
+  <div *ngFor="let i of [].constructor(5)">
+    <div class="h-10 bg-gray-200 rounded"></div>
+  </div>
+</div>
+
+<!-- Product Table -->
+<div *ngIf="!loading" class="bg-white rounded-lg shadow overflow-hidden">
+  <table mat-table [dataSource]="products" matSort (matSortChange)="onSortChange($event)" class="w-full">
+
+    <!-- Image -->
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let p">
+        <img [src]="p.images?.[0]" class="w-12 h-12 rounded object-cover border" />
+      </td>
+    </ng-container>
+
+    <!-- Title -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+      <td mat-cell *matCellDef="let p">{{ p.title }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="vendor">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Vendor</th>
+      <td mat-cell *matCellDef="let p">{{ p.vendor?.shopName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="store">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Store</th>
+      <td mat-cell *matCellDef="let p">{{ p.store?.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Category</th>
+      <td mat-cell *matCellDef="let p">{{ p.category?.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="serviceType">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Service Type</th>
+      <td mat-cell *matCellDef="let p">{{ p.serviceType }}</td>
+    </ng-container>
+
+    <!-- Price -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Price</th>
+      <td mat-cell *matCellDef="let p">₹{{ p.price }}</td>
+    </ng-container>
+
+    <!-- Stock -->
+    <ng-container matColumnDef="stock">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Stock</th>
+      <td mat-cell *matCellDef="let p">{{ p.stock }}</td>
+    </ng-container>
+
+    <!-- CreatedAt -->
+    <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+      <td mat-cell *matCellDef="let p">{{ p.createdAt | date:'mediumDate' }}</td>
+    </ng-container>
+
+    <!-- Actions -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let p" class="flex gap-2">
+        <button mat-icon-button color="primary" (click)="openForm(p)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteProduct(p._id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Rows -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <!-- Paginator -->
+  <mat-paginator [length]="total" [pageSize]="pageSize" [pageIndex]="pageIndex" [pageSizeOptions]="[5, 10, 20]"
+    (page)="onPageChange($event)">
+  </mat-paginator>
+</div>

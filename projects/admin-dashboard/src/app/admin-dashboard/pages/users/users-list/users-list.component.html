@@ -1,0 +1,96 @@
+<div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-lg font-semibold">Users</h2>
+
+    <div class="flex items-center gap-2">
+      <button mat-stroked-button color="primary" (click)="exportCsv()">
+        <mat-icon>file_download</mat-icon> Export
+      </button>
+      <button mat-flat-button color="primary" (click)="openCreate()">
+        <mat-icon>person_add</mat-icon> Add User
+      </button>
+    </div>
+  </div>
+
+  <div class="flex gap-3 items-center mb-4">
+    <mat-form-field appearance="outline" class="w-72">
+      <mat-label>Search</mat-label>
+      <input matInput [(ngModel)]="search" (keyup.enter)="onSearch()" placeholder="name or email">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-44">
+      <mat-label>Role</mat-label>
+      <mat-select [(value)]="roleFilter" (selectionChange)="load(1)">
+        <mat-option value="">All</mat-option>
+        <mat-option value="user">User</mat-option>
+        <mat-option value="vendor">Vendor</mat-option>
+        <mat-option value="admin">Admin</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-40">
+      <mat-label>Active</mat-label>
+      <mat-select [(value)]="isActiveFilter" (selectionChange)="load(1)">
+        <mat-option value="">All</mat-option>
+        <mat-option value="true">Active</mat-option>
+        <mat-option value="false">Inactive</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-stroked-button (click)="onSearch()">Search</button>
+  </div>
+
+  <div *ngIf="loading" class="text-center py-8">
+    <mat-progress-spinner diameter="40" mode="indeterminate"></mat-progress-spinner>
+  </div>
+
+  <div *ngIf="!loading && users.length">
+    <table mat-table [dataSource]="users" class="w-full mat-elevation-z2">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let u">{{u.name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let u">{{u.email}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef>Role</th>
+        <td mat-cell *matCellDef="let u">{{u.role}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="active">
+        <th mat-header-cell *matHeaderCellDef>Active</th>
+        <td mat-cell *matCellDef="let u">
+          <mat-icon [ngClass]="u.isActive ? 'text-green-500' : 'text-gray-400'">
+            {{u.isActive ? 'check_circle' : 'pause_circle'}}
+          </mat-icon>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef>Created</th>
+        <td mat-cell *matCellDef="let u">{{u.createdAt | date:'medium'}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let u">
+          <button mat-icon-button color="primary" (click)="view(u)"><mat-icon>visibility</mat-icon></button>
+          <button mat-icon-button color="accent" (click)="openEdit(u)"><mat-icon>edit</mat-icon></button>
+          <button mat-icon-button color="warn" (click)="toggleActive(u)"><mat-icon>power_settings_new</mat-icon></button>
+          <button mat-icon-button (click)="deleteUser(u)"><mat-icon>delete</mat-icon></button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+    <mat-paginator [length]="total" [pageSize]="limit" (page)="changePage($event)"></mat-paginator>
+  </div>
+
+  <div *ngIf="!loading && !users.length" class="text-center py-8 text-gray-500">No users found.</div>
+</div>

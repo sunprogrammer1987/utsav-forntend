@@ -1,0 +1,12 @@
+<div
+  *ngIf="message"
+  [ngClass]="{
+    'bg-green-600': message.type === 'success',
+    'bg-red-600': message.type === 'error',
+    'bg-blue-600': message.type === 'info',
+    'bg-yellow-500': message.type === 'warning'
+  }"
+  class="fixed bottom-6 right-6 text-white text-sm px-4 py-3 rounded-lg shadow-lg z-50 animate-slide-in"
+>
+  {{ message.text }}
+</div>

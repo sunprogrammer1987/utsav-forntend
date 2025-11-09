@@ -1,0 +1,5 @@
+<div
+  *ngIf="progress > 0 && progress < 100"
+  class="fixed top-0 left-0 h-1.5 bg-sky-400 z-[99999] transition-all duration-200"
+  [style.width.%]="progress"
+></div>

@@ -1,0 +1,351 @@
+<!-- Hero Section -->
+<section class="relative overflow-hidden bg-sky-600 text-white py-14 md:py-10">
+  <!-- Subtle texture overlay -->
+  <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="flex flex-col lg:flex-row items-center gap-10">
+      <!-- Text -->
+      <div class="flex-1 text-center lg:text-left">
+        <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight mb-3">
+          Make Every Event <span class="text-yellow-300">Unforgettable</span>
+        </h1>
+        <p class="text-lg text-blue-50 max-w-xl mx-auto lg:mx-0 mb-6">
+          Plan, decorate, and celebrate — all with one trusted platform built
+          for modern events.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-3">
+          <a [routerLink]="['/products']" [queryParams]="{ type: 'sale' }"
+            class="bg-white text-sky-700 font-semibold px-6 py-3 rounded-full shadow hover:bg-yellow-300 hover:text-gray-900 transition-all">
+            🛍️ Shop Now
+          </a>
+          <a routerLink="/events"
+            class="border border-white text-white px-6 py-3 rounded-full hover:bg-white hover:text-sky-700 transition-all">
+            🎉 Book Event
+          </a>
+        </div>
+      </div>
+
+      <!-- Image -->
+      <div class="w-full lg:w-1/2">
+        <div class="relative group">
+          <div class="absolute inset-0 rounded-3xl bg-white/20 blur-2xl opacity-10 group-hover:opacity-20 transition">
+          </div>
+          <img src="https://images.unsplash.com/photo-1606220838315-056192d5e927?auto=format&fit=crop&q=80&w=1200"
+            alt="Event Setup"
+            class="relative rounded-3xl shadow-xl w-full h-64 sm:h-80 md:h-96 object-cover transform group-hover:scale-[1.02] transition duration-500" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- 🪑 Browse Categories -->
+<section class="py-12 bg-gray-50 dark:bg-gray-900">
+  <div class="container mx-auto px-4">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+        🛍️ Shop Categories
+      </h2>
+      <a routerLink="/categories" [queryParams]="{ type: 'sell' }"
+        class="text-indigo-600 dark:text-indigo-400 hover:underline text-sm font-medium">
+        View All →
+      </a>
+    </div>
+
+    <swiper [slidesPerView]="5" [spaceBetween]="20" [loop]="true" [speed]="50000" [autoplay]="{
+        delay: 0,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: false
+      }" [allowTouchMove]="true" [grabCursor]="true" [freeMode]="true" [navigation]="false" [breakpoints]="{
+        '0': { slidesPerView: 2, spaceBetween: 10 },
+        '640': { slidesPerView: 3, spaceBetween: 15 },
+        '1024': { slidesPerView: 4, spaceBetween: 20 },
+        '1280': { slidesPerView: 5, spaceBetween: 24 }
+      }" class="w-full hide-scrollbar">
+      <ng-template swiperSlide *ngFor="let cat of sellCategories">
+        <a [routerLink]="['/categories', cat.serviceType, cat.slug]"
+          class="relative group cursor-pointer block bg-white dark:bg-gray-800 rounded-xl shadow hover:shadow-lg transition">
+          <img [src]="cat.image" [alt]="cat.name" class="w-full h-36 object-cover rounded-t-xl" />
+          <div class="p-3 text-center font-semibold text-gray-800 dark:text-gray-100 truncate">
+            {{ cat.name }}
+          </div>
+        </a>
+      </ng-template>
+    </swiper>
+  </div>
+</section>
+
+<!-- 🏕️ RENT CATEGORIES -->
+<section class="py-12 bg-gray-50 dark:bg-gray-900">
+  <div class="container mx-auto px-4">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+        🏕️ Rent Categories
+      </h2>
+      <a routerLink="/categories" [queryParams]="{ type: 'rent' }"
+        class="text-indigo-600 dark:text-indigo-400 hover:underline text-sm font-medium">
+        View All →
+      </a>
+    </div>
+
+    <swiper [slidesPerView]="5" [spaceBetween]="20" [loop]="true" [speed]="50000" [autoplay]="{
+        delay: 0,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: false
+      }" [allowTouchMove]="true" [grabCursor]="true" [freeMode]="true" [navigation]="false" [breakpoints]="{
+        '0': { slidesPerView: 2, spaceBetween: 10 },
+        '640': { slidesPerView: 3, spaceBetween: 15 },
+        '1024': { slidesPerView: 4, spaceBetween: 20 },
+        '1280': { slidesPerView: 5, spaceBetween: 24 }
+      }" class="w-full hide-scrollbar">
+      <ng-template swiperSlide *ngFor="let cat of rentCategories">
+        <a [routerLink]="['/categories', cat.serviceType, cat.slug]"
+          class="relative group cursor-pointer block bg-white dark:bg-gray-800 rounded-xl shadow hover:shadow-lg transition">
+          <img [src]="cat.image" [alt]="cat.name" class="w-full h-36 object-cover rounded-t-xl" />
+          <div class="p-3 text-center font-semibold text-gray-800 dark:text-gray-100 truncate">
+            {{ cat.name }}
+          </div>
+        </a>
+      </ng-template>
+    </swiper>
+  </div>
+</section>
+
+<!-- 🎉 EVENT CATEGORIES -->
+<section class="py-12 bg-gray-50 dark:bg-gray-900">
+  <div class="container mx-auto px-4">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+        🎉 Event Categories
+      </h2>
+      <a routerLink="/categories" [queryParams]="{ type: 'service' }"
+        class="text-indigo-600 dark:text-indigo-400 hover:underline text-sm font-medium">
+        View All →
+      </a>
+    </div>
+
+    <swiper [slidesPerView]="5" [spaceBetween]="20" [loop]="true" [speed]="50000" [autoplay]="{
+        delay: 0,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: false
+      }" [allowTouchMove]="true" [grabCursor]="true" [freeMode]="true" [navigation]="false" [breakpoints]="{
+        '0': { slidesPerView: 2, spaceBetween: 10 },
+        '640': { slidesPerView: 3, spaceBetween: 15 },
+        '1024': { slidesPerView: 4, spaceBetween: 20 },
+        '1280': { slidesPerView: 5, spaceBetween: 24 }
+      }" class="w-full hide-scrollbar">
+      <ng-template swiperSlide *ngFor="let cat of eventCategories">
+        <a [routerLink]="['/categories', cat.serviceType, cat.slug]"
+          class="relative group cursor-pointer block bg-white dark:bg-gray-800 rounded-xl shadow hover:shadow-lg transition">
+          <img [src]="cat.image" [alt]="cat.name" class="w-full h-36 object-cover rounded-t-xl" />
+          <div class="p-3 text-center font-semibold text-gray-800 dark:text-gray-100 truncate">
+            {{ cat.name }}
+          </div>
+        </a>
+      </ng-template>
+    </swiper>
+  </div>
+</section>
+
+<!-- Featured Products -->
+<section class="py-16 bg-gray-50 dark:bg-gray-900 transition-colors">
+  <div class="container mx-auto px-6">
+    <div class="flex justify-between items-center mb-8">
+      <h2 class="text-2xl font-semibold text-gray-800 dark:text-gray-100">
+        🌟 Featured Products
+      </h2>
+      <a routerLink="/products" class="text-indigo-600 dark:text-indigo-400 hover:underline font-medium text-sm">
+        View All →
+      </a>
+    </div>
+
+    <!-- Loader -->
+    <div *ngIf="loading" class="text-center py-12 text-gray-500 dark:text-gray-400">
+      <div class="inline-block w-8 h-8 border-4 border-indigo-300 border-t-transparent rounded-full animate-spin"></div>
+      <p class="mt-3">Loading featured products...</p>
+    </div>
+
+    <!-- Product Grid -->
+    <div *ngIf="!loading && featuredProducts.length > 0; else noProducts"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <div *ngFor="let p of featuredProducts" data-aos="fade-up" data-aos-delay="100 * i"
+        class="bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 overflow-hidden flex flex-col">
+        <div class="relative">
+          <img [src]="p.images[0]" [alt]="p.name" class="w-full h-52 object-cover transition duration-300" />
+          <span *ngIf="p.isFeatured"
+            class="absolute top-3 left-3 bg-yellow-400 text-gray-900 text-xs font-semibold px-2 py-1 rounded-full shadow">
+            Featured
+          </span>
+        </div>
+
+        <div class="p-4 flex flex-col flex-grow">
+          <h3 class="font-semibold text-lg mb-1 text-gray-900 dark:text-gray-100 truncate">
+            {{ p.name }}
+          </h3>
+          <p class="text-gray-500 dark:text-gray-400 text-sm mb-2">
+            {{ p.category }} / {{ p.subcategory }}
+          </p>
+          <p class="text-indigo-600 dark:text-indigo-400 font-bold mb-4">
+            ₹{{ p.price }}
+          </p>
+          <button (click)="viewDetails(p)"
+            class="mt-auto bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-full shadow-sm transition-all duration-200">
+            View Details
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- No Products -->
+    <ng-template #noProducts>
+      <p class="text-gray-500 dark:text-gray-400 text-center py-10">
+        No featured products available.
+      </p>
+    </ng-template>
+  </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-20 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
+  <div class="container mx-auto px-6 text-center">
+    <h2 data-aos="fade-up" class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-10">
+      Trusted by Thousands of Happy Clients 🎉
+    </h2>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div data-aos="zoom-in" class="p-6">
+        <div class="text-4xl font-extrabold text-indigo-600 dark:text-indigo-400">
+          1000+
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 mt-2">Events Organized</p>
+      </div>
+      <div data-aos="zoom-in" data-aos-delay="100" class="p-6">
+        <div class="text-4xl font-extrabold text-indigo-600 dark:text-indigo-400">
+          5000+
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 mt-2">Products Sold</p>
+      </div>
+      <div data-aos="zoom-in" data-aos-delay="200" class="p-6">
+        <div class="text-4xl font-extrabold text-indigo-600 dark:text-indigo-400">
+          250+
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 mt-2">Vendors Partnered</p>
+      </div>
+      <div data-aos="zoom-in" data-aos-delay="300" class="p-6">
+        <div class="text-4xl font-extrabold text-indigo-600 dark:text-indigo-400">
+          10K+
+        </div>
+        <p class="text-gray-600 dark:text-gray-300 mt-2">Happy Customers</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="py-20 bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+  <div class="container mx-auto px-6">
+    <h2 data-aos="fade-up" class="text-3xl font-bold text-center mb-12">
+      What Our Clients Say ❤️
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:shadow-2xl transition"
+        data-aos="fade-up">
+        <p class="italic mb-4">
+          “DecorntLite made our wedding absolutely magical! The decor was
+          elegant, on time, and stress-free.”
+        </p>
+        <div class="flex items-center gap-3">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg"
+            class="w-10 h-10 rounded-full border-2 border-yellow-300" />
+          <div>
+            <h4 class="font-semibold">Anjali Sharma</h4>
+            <span class="text-sm text-yellow-200">Wedding Client</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:shadow-2xl transition" data-aos="fade-up"
+        data-aos-delay="150">
+        <p class="italic mb-4">
+          “Their rental service saved us so much time — chairs, tables, and
+          lighting all in one place!”
+        </p>
+        <div class="flex items-center gap-3">
+          <img src="https://randomuser.me/api/portraits/men/22.jpg"
+            class="w-10 h-10 rounded-full border-2 border-yellow-300" />
+          <div>
+            <h4 class="font-semibold">Ravi Patel</h4>
+            <span class="text-sm text-yellow-200">Corporate Client</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:shadow-2xl transition" data-aos="fade-up"
+        data-aos-delay="300">
+        <p class="italic mb-4">
+          “We loved the theme decor and their friendly staff — definitely
+          booking again for my sister’s birthday!”
+        </p>
+        <div class="flex items-center gap-3">
+          <img src="https://randomuser.me/api/portraits/women/68.jpg"
+            class="w-10 h-10 rounded-full border-2 border-yellow-300" />
+          <div>
+            <h4 class="font-semibold">Priya Verma</h4>
+            <span class="text-sm text-yellow-200">Birthday Event</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section class="relative bg-gradient-to-r from-pink-500 via-indigo-600 to-purple-700 text-white py-20 overflow-hidden">
+  <!-- Decorative circles -->
+  <div class="absolute -top-10 -right-10 w-48 h-48 bg-white/10 rounded-full blur-2xl"></div>
+  <div class="absolute bottom-0 left-0 w-72 h-72 bg-yellow-400/10 rounded-full blur-3xl"></div>
+
+  <div class="container mx-auto px-6 relative z-10 text-center">
+    <h2 data-aos="fade-up" class="text-4xl font-bold mb-6">
+      Ready to Plan Your Next Event with
+      <span class="text-yellow-300">DecorntLite?</span>
+    </h2>
+
+    <p data-aos="fade-up" data-aos-delay="150" class="text-lg text-indigo-100 max-w-2xl mx-auto mb-10">
+      From weddings to birthdays, corporate functions to baby showers — we make
+      it effortless to book, decorate, and celebrate in style.
+    </p>
+
+    <div data-aos="fade-up" data-aos-delay="250" class="flex flex-col sm:flex-row justify-center gap-4 mb-12">
+      <a routerLink="/events"
+        class="bg-yellow-300 text-gray-900 font-semibold px-8 py-3 rounded-full shadow-md hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+        🎉 Start Planning
+      </a>
+      <a routerLink="/products"
+        class="bg-white/20 border border-white text-white font-semibold px-8 py-3 rounded-full hover:bg-white hover:text-indigo-700 transition-all duration-300">
+        🛍️ Explore Products
+      </a>
+    </div>
+
+    <!-- Trust Badges -->
+    <div data-aos="fade-up" data-aos-delay="400" class="flex flex-wrap justify-center gap-6 mt-8 text-sm">
+      <div class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl">⭐</span>
+        <span>1000+ Happy Events</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl">💬</span>
+        <span>24/7 Customer Support</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl">🔒</span>
+        <span>Secure Payments</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <span class="text-yellow-300 text-xl">🚚</span>
+        <span>Fast Delivery</span>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,25 @@
+
+
+<nav
+  *ngIf="showBreadcrumb"
+  @fadeIn
+  aria-label="breadcrumb"
+  class="flex items-center space-x-1 text-sm text-gray-600 dark:text-gray-300"
+>
+  <!-- Divider for rest -->
+  <ng-container *ngFor="let bc of breadcrumbs; let last = last">
+    <ng-container *ngIf="!last">
+      <a [routerLink]="bc.url" class="hover:text-blue-600 dark:hover:text-blue-400">
+        <span>{{ bc.label == 'Dashboard' ? 'home' : bc.label}}</span>       
+      </a>
+      <span class="mx-1 text-gray-400">/</span>
+    </ng-container>
+
+    <ng-container *ngIf="last">
+      <span class="font-semibold text-gray-900 dark:text-gray-100">
+        {{ bc.label }}
+      </span>
+    </ng-container>
+  </ng-container>
+</nav>
+

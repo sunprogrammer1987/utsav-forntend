@@ -1,0 +1,88 @@
+<div
+  class="min-h-[80vh] flex items-center justify-center px-4 bg-gradient-to-br from-indigo-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 transition-colors"
+>
+  <div
+    class="w-full max-w-md bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-xl p-8 transition-all duration-300"
+  >
+    <!-- Header -->
+    <h1
+      class="text-3xl font-bold text-gray-900 dark:text-gray-100 text-center mb-2"
+    >
+      Verify Your Email ✉️
+    </h1>
+    <p class="text-center text-gray-500 dark:text-gray-400 mb-6">
+      Enter the 6-digit OTP sent to <strong>{{ email }}</strong>
+    </p>
+
+    <!-- Success -->
+    <div
+      *ngIf="success"
+      class="text-center text-green-600 font-semibold animate-fadeIn"
+    >
+      ✅ Email verified successfully! Redirecting to login...
+    </div>
+
+    <!-- Form -->
+    <form
+      *ngIf="!success"
+      [formGroup]="form"
+      (ngSubmit)="submit()"
+      class="space-y-5"
+      novalidate
+    >
+      <!-- OTP Input -->
+      <div>
+        <label
+          class="block text-sm font-medium text-gray-600 dark:text-gray-400 mb-1"
+          >6-digit OTP</label
+        >
+        <input
+          formControlName="otp"
+          maxlength="6"
+          placeholder="Enter OTP"
+          class="text-center tracking-widest text-lg w-full border border-gray-300 dark:border-gray-600 rounded-lg px-3 py-2.5 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-indigo-400 outline-none"
+        />
+        <div
+          *ngIf="form.controls.otp.invalid && form.controls.otp.touched"
+          class="text-xs text-red-500 mt-1"
+        >
+          Please enter a valid 6-digit OTP.
+        </div>
+      </div>
+
+      <!-- Error -->
+      <div *ngIf="error" class="text-center text-red-600 text-sm">
+        ⚠️ {{ error }}
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        [disabled]="form.invalid || loading"
+        class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 rounded-lg shadow-md transition disabled:opacity-60"
+      >
+        {{ loading ? '⏳ Verifying...' : '✅ Verify Email' }}
+      </button>
+    </form>
+
+    <!-- Resend OTP -->
+    <div *ngIf="!success" class="mt-6 text-center">
+      <button
+        (click)="resendOtp()"
+        class="text-indigo-600 hover:underline text-sm font-medium"
+      >
+        🔁 Resend OTP
+      </button>
+    </div>
+
+    <!-- Back to Login -->
+    <div class="mt-4 text-center">
+      <a
+        routerLink="/auth/login"
+        class="text-gray-500 hover:text-indigo-600 text-sm"
+      >
+        ← Back to Login
+      </a>
+    </div>
+  </div>
+</div>

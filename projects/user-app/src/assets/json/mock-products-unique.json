@@ -1,0 +1,1302 @@
+[
+  {
+    "id": "p1",
+    "name": "Wedding Tents 1",
+    "category": "Tents",
+    "subcategory": "Wedding",
+    "price": 4956,
+    "stock": 49,
+    "images": [
+      "https://picsum.photos/seed/tents_1/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": true
+  },
+  {
+    "id": "p2",
+    "name": "Spotlight Lights 2",
+    "category": "Lights",
+    "subcategory": "Spotlight",
+    "price": 7375,
+    "stock": 30,
+    "images": [
+      "https://picsum.photos/seed/lights_2/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": true
+  },
+  {
+    "id": "p3",
+    "name": "Ceiling Decor 3",
+    "category": "Decor",
+    "subcategory": "Ceiling",
+    "price": 711,
+    "stock": 52,
+    "images": [
+      "https://picsum.photos/seed/decor_3/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": true
+  },
+  {
+    "id": "p4",
+    "name": "Speaker Sound 4",
+    "category": "Sound",
+    "subcategory": "Speaker",
+    "price": 4724,
+    "stock": 170,
+    "images": [
+      "https://picsum.photos/seed/sound_4/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": true
+  },
+  {
+    "id": "p5",
+    "name": "Round Tables 5",
+    "category": "Tables",
+    "subcategory": "Round",
+    "price": 9692,
+    "stock": 76,
+    "images": [
+      "https://picsum.photos/seed/tables_5/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": true
+  },
+  {
+    "id": "p6",
+    "name": "Banquet Tables 6",
+    "category": "Tables",
+    "subcategory": "Banquet",
+    "price": 6349,
+    "stock": 7,
+    "images": [
+      "https://picsum.photos/seed/tables_6/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": true
+  },
+  {
+    "id": "p7",
+    "name": "Decorative Lights 7",
+    "category": "Lights",
+    "subcategory": "Decorative",
+    "price": 6153,
+    "stock": 139,
+    "images": [
+      "https://picsum.photos/seed/lights_7/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": true
+  },
+  {
+    "id": "p8",
+    "name": "Event Tents 8",
+    "category": "Tents",
+    "subcategory": "Event",
+    "price": 8847,
+    "stock": 119,
+    "images": [
+      "https://picsum.photos/seed/tents_8/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": true
+  },
+  {
+    "id": "p9",
+    "name": "Spotlight Lights 9",
+    "category": "Lights",
+    "subcategory": "Spotlight",
+    "price": 4423,
+    "stock": 24,
+    "images": [
+      "https://picsum.photos/seed/lights_9/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": true
+  },
+  {
+    "id": "p10",
+    "name": "Rectangular Tables 10",
+    "category": "Tables",
+    "subcategory": "Rectangular",
+    "price": 4347,
+    "stock": 194,
+    "images": [
+      "https://picsum.photos/seed/tables_10/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": true
+  },
+  {
+    "id": "p11",
+    "name": "Wedding Tents 11",
+    "category": "Tents",
+    "subcategory": "Wedding",
+    "price": 3914,
+    "stock": 93,
+    "images": [
+      "https://picsum.photos/seed/tents_11/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p12",
+    "name": "LED Lights 12",
+    "category": "Lights",
+    "subcategory": "LED",
+    "price": 5417,
+    "stock": 56,
+    "images": [
+      "https://picsum.photos/seed/lights_12/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p13",
+    "name": "Round Tables 13",
+    "category": "Tables",
+    "subcategory": "Round",
+    "price": 4445,
+    "stock": 35,
+    "images": [
+      "https://picsum.photos/seed/tables_13/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p14",
+    "name": "Mic Sound 14",
+    "category": "Sound",
+    "subcategory": "Mic",
+    "price": 9237,
+    "stock": 65,
+    "images": [
+      "https://picsum.photos/seed/sound_14/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p15",
+    "name": "Fairy Lights 15",
+    "category": "Lights",
+    "subcategory": "Fairy",
+    "price": 6331,
+    "stock": 106,
+    "images": [
+      "https://picsum.photos/seed/lights_15/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p16",
+    "name": "Rectangular Tables 16",
+    "category": "Tables",
+    "subcategory": "Rectangular",
+    "price": 7181,
+    "stock": 160,
+    "images": [
+      "https://picsum.photos/seed/tables_16/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p17",
+    "name": "Ceiling Decor 17",
+    "category": "Decor",
+    "subcategory": "Ceiling",
+    "price": 627,
+    "stock": 16,
+    "images": [
+      "https://picsum.photos/seed/decor_17/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p18",
+    "name": "Amplifier Sound 18",
+    "category": "Sound",
+    "subcategory": "Amplifier",
+    "price": 4955,
+    "stock": 16,
+    "images": [
+      "https://picsum.photos/seed/sound_18/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p19",
+    "name": "Amplifier Sound 19",
+    "category": "Sound",
+    "subcategory": "Amplifier",
+    "price": 461,
+    "stock": 46,
+    "images": [
+      "https://picsum.photos/seed/sound_19/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p20",
+    "name": "Event Tents 20",
+    "category": "Tents",
+    "subcategory": "Event",
+    "price": 2728,
+    "stock": 123,
+    "images": [
+      "https://picsum.photos/seed/tents_20/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p21",
+    "name": "Spotlight Lights 21",
+    "category": "Lights",
+    "subcategory": "Spotlight",
+    "price": 6248,
+    "stock": 200,
+    "images": [
+      "https://picsum.photos/seed/lights_21/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p22",
+    "name": "Speaker Sound 22",
+    "category": "Sound",
+    "subcategory": "Speaker",
+    "price": 2924,
+    "stock": 192,
+    "images": [
+      "https://picsum.photos/seed/sound_22/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p23",
+    "name": "Spotlight Lights 23",
+    "category": "Lights",
+    "subcategory": "Spotlight",
+    "price": 5956,
+    "stock": 57,
+    "images": [
+      "https://picsum.photos/seed/lights_23/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p24",
+    "name": "Wedding Tents 24",
+    "category": "Tents",
+    "subcategory": "Wedding",
+    "price": 7094,
+    "stock": 76,
+    "images": [
+      "https://picsum.photos/seed/tents_24/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p25",
+    "name": "Wedding Tents 25",
+    "category": "Tents",
+    "subcategory": "Wedding",
+    "price": 9883,
+    "stock": 148,
+    "images": [
+      "https://picsum.photos/seed/tents_25/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p26",
+    "name": "Plastic Chairs 26",
+    "category": "Chairs",
+    "subcategory": "Plastic",
+    "price": 583,
+    "stock": 173,
+    "images": [
+      "https://picsum.photos/seed/chairs_26/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p27",
+    "name": "LED Lights 27",
+    "category": "Lights",
+    "subcategory": "LED",
+    "price": 9875,
+    "stock": 10,
+    "images": [
+      "https://picsum.photos/seed/lights_27/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p28",
+    "name": "Spotlight Lights 28",
+    "category": "Lights",
+    "subcategory": "Spotlight",
+    "price": 4017,
+    "stock": 99,
+    "images": [
+      "https://picsum.photos/seed/lights_28/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p29",
+    "name": "Plastic Chairs 29",
+    "category": "Chairs",
+    "subcategory": "Plastic",
+    "price": 520,
+    "stock": 75,
+    "images": [
+      "https://picsum.photos/seed/chairs_29/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p30",
+    "name": "Plastic Chairs 30",
+    "category": "Chairs",
+    "subcategory": "Plastic",
+    "price": 5325,
+    "stock": 27,
+    "images": [
+      "https://picsum.photos/seed/chairs_30/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p31",
+    "name": "Rectangular Tables 31",
+    "category": "Tables",
+    "subcategory": "Rectangular",
+    "price": 9053,
+    "stock": 124,
+    "images": [
+      "https://picsum.photos/seed/tables_31/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p32",
+    "name": "Speaker Sound 32",
+    "category": "Sound",
+    "subcategory": "Speaker",
+    "price": 6003,
+    "stock": 158,
+    "images": [
+      "https://picsum.photos/seed/sound_32/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p33",
+    "name": "Plastic Chairs 33",
+    "category": "Chairs",
+    "subcategory": "Plastic",
+    "price": 7187,
+    "stock": 61,
+    "images": [
+      "https://picsum.photos/seed/chairs_33/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p34",
+    "name": "DJ Sound 34",
+    "category": "Sound",
+    "subcategory": "DJ",
+    "price": 5021,
+    "stock": 195,
+    "images": [
+      "https://picsum.photos/seed/sound_34/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p35",
+    "name": "Cushioned Chairs 35",
+    "category": "Chairs",
+    "subcategory": "Cushioned",
+    "price": 6289,
+    "stock": 174,
+    "images": [
+      "https://picsum.photos/seed/chairs_35/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p36",
+    "name": "Amplifier Sound 36",
+    "category": "Sound",
+    "subcategory": "Amplifier",
+    "price": 1721,
+    "stock": 199,
+    "images": [
+      "https://picsum.photos/seed/sound_36/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p37",
+    "name": "Banquet Tables 37",
+    "category": "Tables",
+    "subcategory": "Banquet",
+    "price": 3523,
+    "stock": 166,
+    "images": [
+      "https://picsum.photos/seed/tables_37/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p38",
+    "name": "Mic Sound 38",
+    "category": "Sound",
+    "subcategory": "Mic",
+    "price": 7534,
+    "stock": 80,
+    "images": [
+      "https://picsum.photos/seed/sound_38/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p39",
+    "name": "Banquet Tables 39",
+    "category": "Tables",
+    "subcategory": "Banquet",
+    "price": 7633,
+    "stock": 69,
+    "images": [
+      "https://picsum.photos/seed/tables_39/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p40",
+    "name": "Ceiling Decor 40",
+    "category": "Decor",
+    "subcategory": "Ceiling",
+    "price": 1166,
+    "stock": 187,
+    "images": [
+      "https://picsum.photos/seed/decor_40/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p41",
+    "name": "Event Tents 41",
+    "category": "Tents",
+    "subcategory": "Event",
+    "price": 9306,
+    "stock": 112,
+    "images": [
+      "https://picsum.photos/seed/tents_41/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p42",
+    "name": "Fairy Lights 42",
+    "category": "Lights",
+    "subcategory": "Fairy",
+    "price": 9323,
+    "stock": 132,
+    "images": [
+      "https://picsum.photos/seed/lights_42/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p43",
+    "name": "Cushioned Chairs 43",
+    "category": "Chairs",
+    "subcategory": "Cushioned",
+    "price": 484,
+    "stock": 29,
+    "images": [
+      "https://picsum.photos/seed/chairs_43/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p44",
+    "name": "Event Tents 44",
+    "category": "Tents",
+    "subcategory": "Event",
+    "price": 8980,
+    "stock": 137,
+    "images": [
+      "https://picsum.photos/seed/tents_44/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p45",
+    "name": "Banquet Tables 45",
+    "category": "Tables",
+    "subcategory": "Banquet",
+    "price": 1700,
+    "stock": 14,
+    "images": [
+      "https://picsum.photos/seed/tables_45/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p46",
+    "name": "Mic Sound 46",
+    "category": "Sound",
+    "subcategory": "Mic",
+    "price": 488,
+    "stock": 24,
+    "images": [
+      "https://picsum.photos/seed/sound_46/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p47",
+    "name": "Round Tables 47",
+    "category": "Tables",
+    "subcategory": "Round",
+    "price": 5552,
+    "stock": 181,
+    "images": [
+      "https://picsum.photos/seed/tables_47/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p48",
+    "name": "Party Tents 48",
+    "category": "Tents",
+    "subcategory": "Party",
+    "price": 6555,
+    "stock": 38,
+    "images": [
+      "https://picsum.photos/seed/tents_48/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p49",
+    "name": "Ceiling Decor 49",
+    "category": "Decor",
+    "subcategory": "Ceiling",
+    "price": 8403,
+    "stock": 59,
+    "images": [
+      "https://picsum.photos/seed/decor_49/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p50",
+    "name": "Metal Chairs 50",
+    "category": "Chairs",
+    "subcategory": "Metal",
+    "price": 8027,
+    "stock": 188,
+    "images": [
+      "https://picsum.photos/seed/chairs_50/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p51",
+    "name": "Ceiling Decor 51",
+    "category": "Decor",
+    "subcategory": "Ceiling",
+    "price": 7496,
+    "stock": 197,
+    "images": [
+      "https://picsum.photos/seed/decor_51/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p52",
+    "name": "Fairy Lights 52",
+    "category": "Lights",
+    "subcategory": "Fairy",
+    "price": 1008,
+    "stock": 160,
+    "images": [
+      "https://picsum.photos/seed/lights_52/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p53",
+    "name": "Banquet Tables 53",
+    "category": "Tables",
+    "subcategory": "Banquet",
+    "price": 4691,
+    "stock": 136,
+    "images": [
+      "https://picsum.photos/seed/tables_53/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p54",
+    "name": "Speaker Sound 54",
+    "category": "Sound",
+    "subcategory": "Speaker",
+    "price": 1827,
+    "stock": 187,
+    "images": [
+      "https://picsum.photos/seed/sound_54/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p55",
+    "name": "Stage Decor 55",
+    "category": "Decor",
+    "subcategory": "Stage",
+    "price": 8195,
+    "stock": 77,
+    "images": [
+      "https://picsum.photos/seed/decor_55/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p56",
+    "name": "Backdrop Decor 56",
+    "category": "Decor",
+    "subcategory": "Backdrop",
+    "price": 6641,
+    "stock": 25,
+    "images": [
+      "https://picsum.photos/seed/decor_56/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p57",
+    "name": "Backdrop Decor 57",
+    "category": "Decor",
+    "subcategory": "Backdrop",
+    "price": 2255,
+    "stock": 161,
+    "images": [
+      "https://picsum.photos/seed/decor_57/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p58",
+    "name": "LED Lights 58",
+    "category": "Lights",
+    "subcategory": "LED",
+    "price": 9198,
+    "stock": 173,
+    "images": [
+      "https://picsum.photos/seed/lights_58/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p59",
+    "name": "Canopy Tents 59",
+    "category": "Tents",
+    "subcategory": "Canopy",
+    "price": 1043,
+    "stock": 114,
+    "images": [
+      "https://picsum.photos/seed/tents_59/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p60",
+    "name": "DJ Sound 60",
+    "category": "Sound",
+    "subcategory": "DJ",
+    "price": 9742,
+    "stock": 10,
+    "images": [
+      "https://picsum.photos/seed/sound_60/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p61",
+    "name": "Banquet Tables 61",
+    "category": "Tables",
+    "subcategory": "Banquet",
+    "price": 6153,
+    "stock": 178,
+    "images": [
+      "https://picsum.photos/seed/tables_61/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p62",
+    "name": "Banquet Tables 62",
+    "category": "Tables",
+    "subcategory": "Banquet",
+    "price": 5682,
+    "stock": 94,
+    "images": [
+      "https://picsum.photos/seed/tables_62/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p63",
+    "name": "DJ Sound 63",
+    "category": "Sound",
+    "subcategory": "DJ",
+    "price": 7344,
+    "stock": 194,
+    "images": [
+      "https://picsum.photos/seed/sound_63/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p64",
+    "name": "Flower Decor 64",
+    "category": "Decor",
+    "subcategory": "Flower",
+    "price": 7814,
+    "stock": 10,
+    "images": [
+      "https://picsum.photos/seed/decor_64/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p65",
+    "name": "Cushioned Chairs 65",
+    "category": "Chairs",
+    "subcategory": "Cushioned",
+    "price": 8883,
+    "stock": 106,
+    "images": [
+      "https://picsum.photos/seed/chairs_65/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p66",
+    "name": "Wedding Tents 66",
+    "category": "Tents",
+    "subcategory": "Wedding",
+    "price": 7069,
+    "stock": 19,
+    "images": [
+      "https://picsum.photos/seed/tents_66/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p67",
+    "name": "Spotlight Lights 67",
+    "category": "Lights",
+    "subcategory": "Spotlight",
+    "price": 5482,
+    "stock": 21,
+    "images": [
+      "https://picsum.photos/seed/lights_67/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p68",
+    "name": "Cushioned Chairs 68",
+    "category": "Chairs",
+    "subcategory": "Cushioned",
+    "price": 9059,
+    "stock": 88,
+    "images": [
+      "https://picsum.photos/seed/chairs_68/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p69",
+    "name": "Stage Decor 69",
+    "category": "Decor",
+    "subcategory": "Stage",
+    "price": 1074,
+    "stock": 70,
+    "images": [
+      "https://picsum.photos/seed/decor_69/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p70",
+    "name": "Backdrop Decor 70",
+    "category": "Decor",
+    "subcategory": "Backdrop",
+    "price": 1715,
+    "stock": 74,
+    "images": [
+      "https://picsum.photos/seed/decor_70/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p71",
+    "name": "Stage Decor 71",
+    "category": "Decor",
+    "subcategory": "Stage",
+    "price": 5713,
+    "stock": 128,
+    "images": [
+      "https://picsum.photos/seed/decor_71/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p72",
+    "name": "Wooden Chairs 72",
+    "category": "Chairs",
+    "subcategory": "Wooden",
+    "price": 7202,
+    "stock": 156,
+    "images": [
+      "https://picsum.photos/seed/chairs_72/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p73",
+    "name": "Ceiling Decor 73",
+    "category": "Decor",
+    "subcategory": "Ceiling",
+    "price": 4052,
+    "stock": 109,
+    "images": [
+      "https://picsum.photos/seed/decor_73/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p74",
+    "name": "Banquet Tables 74",
+    "category": "Tables",
+    "subcategory": "Banquet",
+    "price": 8537,
+    "stock": 134,
+    "images": [
+      "https://picsum.photos/seed/tables_74/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p75",
+    "name": "Metal Chairs 75",
+    "category": "Chairs",
+    "subcategory": "Metal",
+    "price": 7028,
+    "stock": 71,
+    "images": [
+      "https://picsum.photos/seed/chairs_75/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p76",
+    "name": "Canopy Tents 76",
+    "category": "Tents",
+    "subcategory": "Canopy",
+    "price": 7416,
+    "stock": 146,
+    "images": [
+      "https://picsum.photos/seed/tents_76/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p77",
+    "name": "Mic Sound 77",
+    "category": "Sound",
+    "subcategory": "Mic",
+    "price": 7900,
+    "stock": 107,
+    "images": [
+      "https://picsum.photos/seed/sound_77/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p78",
+    "name": "Ceiling Decor 78",
+    "category": "Decor",
+    "subcategory": "Ceiling",
+    "price": 6907,
+    "stock": 30,
+    "images": [
+      "https://picsum.photos/seed/decor_78/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p79",
+    "name": "Wedding Tents 79",
+    "category": "Tents",
+    "subcategory": "Wedding",
+    "price": 7267,
+    "stock": 172,
+    "images": [
+      "https://picsum.photos/seed/tents_79/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p80",
+    "name": "Banquet Tables 80",
+    "category": "Tables",
+    "subcategory": "Banquet",
+    "price": 5409,
+    "stock": 132,
+    "images": [
+      "https://picsum.photos/seed/tables_80/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p81",
+    "name": "LED Lights 81",
+    "category": "Lights",
+    "subcategory": "LED",
+    "price": 4803,
+    "stock": 125,
+    "images": [
+      "https://picsum.photos/seed/lights_81/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p82",
+    "name": "Wedding Tents 82",
+    "category": "Tents",
+    "subcategory": "Wedding",
+    "price": 9919,
+    "stock": 37,
+    "images": [
+      "https://picsum.photos/seed/tents_82/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p83",
+    "name": "Stage Decor 83",
+    "category": "Decor",
+    "subcategory": "Stage",
+    "price": 9232,
+    "stock": 5,
+    "images": [
+      "https://picsum.photos/seed/decor_83/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p84",
+    "name": "Event Tents 84",
+    "category": "Tents",
+    "subcategory": "Event",
+    "price": 1536,
+    "stock": 8,
+    "images": [
+      "https://picsum.photos/seed/tents_84/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p85",
+    "name": "LED Lights 85",
+    "category": "Lights",
+    "subcategory": "LED",
+    "price": 3028,
+    "stock": 92,
+    "images": [
+      "https://picsum.photos/seed/lights_85/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p86",
+    "name": "Wooden Chairs 86",
+    "category": "Chairs",
+    "subcategory": "Wooden",
+    "price": 3880,
+    "stock": 182,
+    "images": [
+      "https://picsum.photos/seed/chairs_86/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p87",
+    "name": "Stage Decor 87",
+    "category": "Decor",
+    "subcategory": "Stage",
+    "price": 1246,
+    "stock": 151,
+    "images": [
+      "https://picsum.photos/seed/decor_87/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p88",
+    "name": "Round Tables 88",
+    "category": "Tables",
+    "subcategory": "Round",
+    "price": 2231,
+    "stock": 116,
+    "images": [
+      "https://picsum.photos/seed/tables_88/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p89",
+    "name": "Canopy Tents 89",
+    "category": "Tents",
+    "subcategory": "Canopy",
+    "price": 8097,
+    "stock": 42,
+    "images": [
+      "https://picsum.photos/seed/tents_89/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p90",
+    "name": "Wedding Tents 90",
+    "category": "Tents",
+    "subcategory": "Wedding",
+    "price": 601,
+    "stock": 164,
+    "images": [
+      "https://picsum.photos/seed/tents_90/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p91",
+    "name": "LED Lights 91",
+    "category": "Lights",
+    "subcategory": "LED",
+    "price": 8552,
+    "stock": 10,
+    "images": [
+      "https://picsum.photos/seed/lights_91/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p92",
+    "name": "Cushioned Chairs 92",
+    "category": "Chairs",
+    "subcategory": "Cushioned",
+    "price": 4078,
+    "stock": 59,
+    "images": [
+      "https://picsum.photos/seed/chairs_92/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p93",
+    "name": "Flower Decor 93",
+    "category": "Decor",
+    "subcategory": "Flower",
+    "price": 7337,
+    "stock": 47,
+    "images": [
+      "https://picsum.photos/seed/decor_93/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p94",
+    "name": "Mic Sound 94",
+    "category": "Sound",
+    "subcategory": "Mic",
+    "price": 840,
+    "stock": 136,
+    "images": [
+      "https://picsum.photos/seed/sound_94/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p95",
+    "name": "Ceiling Decor 95",
+    "category": "Decor",
+    "subcategory": "Ceiling",
+    "price": 2915,
+    "stock": 30,
+    "images": [
+      "https://picsum.photos/seed/decor_95/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p96",
+    "name": "Fairy Lights 96",
+    "category": "Lights",
+    "subcategory": "Fairy",
+    "price": 4978,
+    "stock": 118,
+    "images": [
+      "https://picsum.photos/seed/lights_96/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p97",
+    "name": "Round Tables 97",
+    "category": "Tables",
+    "subcategory": "Round",
+    "price": 1624,
+    "stock": 182,
+    "images": [
+      "https://picsum.photos/seed/tables_97/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p98",
+    "name": "Mic Sound 98",
+    "category": "Sound",
+    "subcategory": "Mic",
+    "price": 8504,
+    "stock": 5,
+    "images": [
+      "https://picsum.photos/seed/sound_98/400/300"
+    ],
+    "type": "sale",
+    "isFeatured": false
+  },
+  {
+    "id": "p99",
+    "name": "Canopy Tents 99",
+    "category": "Tents",
+    "subcategory": "Canopy",
+    "price": 3584,
+    "stock": 188,
+    "images": [
+      "https://picsum.photos/seed/tents_99/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  },
+  {
+    "id": "p100",
+    "name": "DJ Sound 100",
+    "category": "Sound",
+    "subcategory": "DJ",
+    "price": 2564,
+    "stock": 68,
+    "images": [
+      "https://picsum.photos/seed/sound_100/400/300"
+    ],
+    "type": "rental",
+    "isFeatured": false
+  }
+]

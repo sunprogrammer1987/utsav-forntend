@@ -1,0 +1,61 @@
+<h2 mat-dialog-title>{{ data ? 'Edit Event' : 'Create Event' }}</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="form" class="space-y-3">
+
+    <!-- Name -->
+    <mat-form-field class="w-full">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+
+    <!-- Type -->
+    <mat-form-field class="w-full">
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="type">
+        <mat-option value="Wedding">Wedding</mat-option>
+        <mat-option value="Birthday">Birthday</mat-option>
+        <mat-option value="Corporate">Corporate</mat-option>
+        <mat-option value="Other">Other</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Store -->
+    <mat-form-field class="w-full">
+      <mat-label>Store</mat-label>
+      <mat-select formControlName="store">
+        <mat-option *ngFor="let s of stores" [value]="s._id">{{ s.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Base Price -->
+    <mat-form-field class="w-full">
+      <mat-label>Base Price</mat-label>
+      <input matInput type="number" formControlName="basePrice" />
+    </mat-form-field>
+
+    <!-- Features -->
+    <mat-form-field class="w-full">
+      <mat-label>Features (comma separated)</mat-label>
+      <input matInput formControlName="features" />
+    </mat-form-field>
+
+    <!-- Image -->
+    <mat-form-field class="w-full">
+      <mat-label>Image URL</mat-label>
+      <input matInput formControlName="image" />
+    </mat-form-field>
+
+    <!-- Description -->
+    <mat-form-field class="w-full">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Cancel</button>
+  <button mat-flat-button color="primary" (click)="save()">Save</button>
+</mat-dialog-actions>

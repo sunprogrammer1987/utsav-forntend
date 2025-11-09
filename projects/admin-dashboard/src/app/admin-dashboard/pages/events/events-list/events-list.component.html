@@ -1,0 +1,118 @@
+<!-- Toolbar -->
+<div class="flex flex-wrap items-center justify-between mb-5 gap-3">
+  <h2 class="text-2xl font-semibold">Events</h2>
+
+  <form class="flex flex-wrap items-center gap-2">
+    <!-- Vendor Filter -->
+    <mat-form-field appearance="outline" class="w-48">
+      <mat-label>Vendor</mat-label>
+      <mat-select [(ngModel)]="vendor" name="vendor" (selectionChange)="onVendorChange()">
+        <mat-option value="">All</mat-option>
+        <mat-option *ngFor="let v of vendors" [value]="v._id">{{ v.shopName }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Store Filter -->
+    <mat-form-field appearance="outline" class="w-48">
+      <mat-label>Store</mat-label>
+      <mat-select [(ngModel)]="store" name="store" (selectionChange)="onFilterChange()">
+        <mat-option value="">All</mat-option>
+        <mat-option *ngFor="let s of stores" [value]="s._id">{{ s.name }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Type Filter -->
+    <mat-form-field appearance="outline" class="w-48">
+      <mat-label>Type</mat-label>
+      <mat-select [(ngModel)]="type" name="type" (selectionChange)="onFilterChange()">
+        <mat-option value="">All</mat-option>
+        <mat-option value="Wedding">Wedding</mat-option>
+        <mat-option value="Birthday">Birthday</mat-option>
+        <mat-option value="Corporate">Corporate</mat-option>
+        <mat-option value="Other">Other</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Search -->
+    <mat-form-field appearance="outline" class="w-56">
+      <mat-label>Search</mat-label>
+      <input matInput [(ngModel)]="search" name="search" (keyup.enter)="onSearch()" placeholder="Event name..." />
+      <button mat-icon-button matSuffix (click)="onSearch()" type="button"><mat-icon>search</mat-icon></button>
+    </mat-form-field>
+
+    <!-- Add Event -->
+    <button mat-flat-button color="primary" type="button" (click)="openForm()">+ Add Event</button>
+  </form>
+</div>
+
+<!-- Loading Skeleton -->
+<div *ngIf="loading" class="space-y-3 animate-pulse">
+  <div *ngFor="let i of [1, 2, 3, 4]">
+    <div class="h-10 bg-gray-200 rounded"></div>
+  </div>
+</div>
+
+<!-- Table -->
+<div *ngIf="!loading" class="bg-white rounded-lg shadow overflow-hidden">
+  <table mat-table [dataSource]="events" class="w-full">
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let e">{{ e.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="type">
+      <th mat-header-cell *matHeaderCellDef>Type</th>
+      <td mat-cell *matCellDef="let e">{{ e.type }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="store">
+      <th mat-header-cell *matHeaderCellDef>Store</th>
+      <td mat-cell *matCellDef="let e">{{ e.store?.name || '—' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="vendor">
+      <th mat-header-cell *matHeaderCellDef>Vendor</th>
+      <td mat-cell *matCellDef="let e">{{ e.vendor?.shopName || '—' }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef>Price</th>
+      <td mat-cell *matCellDef="let e">₹{{ e.basePrice }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let e">
+        <mat-select [(value)]="e.status" (selectionChange)="changeStatus(e, $event.value)">
+          <mat-option value="Pending">Pending</mat-option>
+          <mat-option value="Active">Active</mat-option>
+          <mat-option value="Rejected">Rejected</mat-option>
+        </mat-select>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let e" class="flex gap-2">
+        <button mat-icon-button color="primary" (click)="openForm(e)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="deleteEvent(e._id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <mat-paginator
+    [length]="total"
+    [pageSize]="pageSize"
+    [pageIndex]="pageIndex"
+    [pageSizeOptions]="[5, 10, 20]"
+    (page)="onPage($event)">
+  </mat-paginator>
+</div>
